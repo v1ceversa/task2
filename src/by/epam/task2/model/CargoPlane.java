@@ -2,7 +2,7 @@ package by.epam.task2.model;
 
 import by.epam.task2.constant.CommonConstants;
 
-public class CargoPlane extends Plane{
+public class CargoPlane extends Plane {
 	private Long weightCapacity;
 	
 	public CargoPlane() {

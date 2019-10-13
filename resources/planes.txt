@@ -1,0 +1,5 @@
+Airliner boing1720 15000 50 tv 60
+CargoPlane wooow 15 15 15
+Airliner 1 15f 15 51
+Carg 145sdf sfD
+Airliner 1 1 1 1 1

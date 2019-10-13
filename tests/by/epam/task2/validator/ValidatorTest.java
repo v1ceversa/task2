@@ -11,7 +11,10 @@ public class ValidatorTest {
 	{
 		return new Object[][] {
 			new Object[] {
-					"Airliner name: r1 cost: 15 consumption: 1 conveniences: ouups seat_capacity: 2" , true
+					"Airliner r1 15 1 ouups 2" , true
+			},
+			new Object[] {
+					"Airliner r1 15d 1 ouups 2" , false
 			},
 		};
 	}
