@@ -8,7 +8,6 @@ import java.util.List;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import by.epam.task2.model.Airliner;
 import by.epam.task2.model.CargoPlane;
 import by.epam.task2.model.Plane;
 
@@ -17,27 +16,27 @@ public class WeightCapacityComparatorTest {
 	public Object[][] dWeightCapacity() {
 		return new Object[][] {
 				new Object[] { 
-						new Plane[] { 
-								new Airliner("1", 2L, 1L, "1", 2L)
-								, new CargoPlane("2", 1L, 3L, 2L)
-								, new CargoPlane("3", 1L, 3L, 1L) 
+						new CargoPlane[] {
+								new CargoPlane("1", 1L, 3L, 2L)
+								, new CargoPlane("2", 1L, 3L, 4L)
+								, new CargoPlane("3", 1L, 3L, 3L)
 						}
 						, "132" 
 				},
 				new Object[] {
-						new Plane[] {
+						new CargoPlane[] {
 								new CargoPlane("1", 1L, 3L, 2L)
-								, new CargoPlane("2", 1L, 15L, 1L)
-								, new Airliner("3", 2L, 651L, "1", 2L) 
+								, new CargoPlane("2", 1L, 15L, 3L)
+								, new CargoPlane("3", 1L, 15L, 1L) 
 						}
-						, "321" 
+						, "312" 
 				}, 
 		};
 	}
 
 	@Test(dataProvider = "dWeightCapacity")
-	public void consumpitonCompareTest(Plane[] planes, String result) {
-		List<Plane> pl = Arrays.asList(planes);
+	public void consumpitonCompareTest(CargoPlane[] cargos, String result) {
+		List<CargoPlane> pl = Arrays.asList(cargos);
 		pl.sort(new WeightCapacityComparator());
 		String answer = "";
 		for (Plane plane: pl) {

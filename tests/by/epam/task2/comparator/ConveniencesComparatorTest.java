@@ -9,7 +9,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import by.epam.task2.model.Airliner;
-import by.epam.task2.model.CargoPlane;
 import by.epam.task2.model.Plane;
 
 public class ConveniencesComparatorTest {
@@ -18,27 +17,25 @@ public class ConveniencesComparatorTest {
 	public Object[][] dConveniences() {
 		return new Object[][] {
 				new Object[] { 
-						new Plane[] { 
+						new Airliner[] { 
 								new Airliner("1", 2L, 1L, "1", 2L)
-								, new CargoPlane("2", 1L, 3L, 2L)
 								, new Airliner("3", 2L, 2L, "2", 2L) 
 						}
-						, "213" 
+						, "13" 
 				},
 				new Object[] {
-						new Plane[] {
+						new Airliner[] {
 								new Airliner("1", 2L, 516L, "3", 2L)
-								, new CargoPlane("2", 1L, 15L, 2L)
 								, new Airliner("3", 2L, 651L, "1", 2L) 
 						}
-						, "231" 
+						, "31" 
 				}, 
 		};
 	}
 
 	@Test(dataProvider = "dConveniences")
-	public void conveniencesCompareTest(Plane[] planes, String result) {
-		List<Plane> pl = Arrays.asList(planes);
+	public void conveniencesCompareTest(Airliner[] airliners, String result) {
+		List<Airliner> pl = Arrays.asList(airliners);
 		pl.sort(new ConveniencesComparator());
 		String answer = "";
 		for (Plane plane: pl) {
