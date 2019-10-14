@@ -40,6 +40,9 @@ abstract public class Plane {
 		this.consumption = consumption;
 	}
 	
+
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -21,7 +21,7 @@ public class Airliner extends Plane {
 	public String toString() {
 		
 		return "====/PLANE\\====\n"
-				+ CommonConstants.CARGO_PLANE
+				+ CommonConstants.AIRLINER
 				+ "\nNAME: " + getName()
 				+ "\nCOST: " + getCost()
 				+ "\nCONSUMPTION: " + getConsumption()
