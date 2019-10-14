@@ -44,7 +44,7 @@ public class Reader {
 					+ " that couses that error to support group: someref");
 			throw new FileException("bad token was processed");
 		}
-		logger.info("Reader su");
+		logger.info("Reader ends running successfully");
 		
 		return planes;
 	}
