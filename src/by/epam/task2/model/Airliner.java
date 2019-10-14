@@ -18,15 +18,47 @@ public class Airliner extends Plane {
 	}
 	
 	@Override
-	public void show() {
-		System.out.println("====/PLANE\\====");
-		System.out.println(CommonConstants.AIRLINER);
-		System.out.println("NAME: " + getName());
-		System.out.println("COST: " + getCost());
-		System.out.println("CONSUMPTION: " + getConsumption());
-		System.out.println("CONVENIENCES: " + getConveniences());
-		System.out.println("SEAT CAPACITY: " + getSeatCapacity());
-		System.out.println("====\\PLANE/====");
+	public String toString() {
+		
+		return "====/PLANE\\====\n"
+				+ CommonConstants.CARGO_PLANE
+				+ "\nNAME: " + getName()
+				+ "\nCOST: " + getCost()
+				+ "\nCONSUMPTION: " + getConsumption()
+				+ "\nCONVENIENCES: " + getConveniences()
+				+ "\nSEAT CAPACITY: " + getSeatCapacity()
+				+ "\n====\\PLANE/====";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((conveniences == null) ? 0 : conveniences.hashCode());
+		result = prime * result + ((seatCapacity == null) ? 0 : seatCapacity.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Airliner other = (Airliner) obj;
+		if (conveniences == null) {
+			if (other.conveniences != null)
+				return false;
+		} else if (!conveniences.equals(other.conveniences))
+			return false;
+		if (seatCapacity == null) {
+			if (other.seatCapacity != null)
+				return false;
+		} else if (!seatCapacity.equals(other.seatCapacity))
+			return false;
+		return true;
 	}
 
 	public String getConveniences() {

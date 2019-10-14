@@ -15,22 +15,48 @@ public class CargoPlane extends Plane {
 	}
 	
 	@Override
-	public void show() {
-		System.out.println("====/PLANE\\====");
-		System.out.println(CommonConstants.CARGO_PLANE);
-		System.out.println("NAME: " + getName());
-		System.out.println("COST: " + getCost());
-		System.out.println("CONSUMPTION: " + getConsumption());
-		System.out.println("SEAT CAPACITY: " + getWeightCapacity());
-		System.out.println("====\\PLANE/====");
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((weightCapacity == null) ? 0 : weightCapacity.hashCode());
+		return result;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CargoPlane other = (CargoPlane) obj;
+		if (weightCapacity == null) {
+			if (other.weightCapacity != null)
+				return false;
+		} else if (!weightCapacity.equals(other.weightCapacity))
+			return false;
+		return true;
+	}
+
 	public Long getWeightCapacity() {
 		return weightCapacity;
 	}
 
 	public void setWeightCapacity(Long weigthCapacity) {
 		this.weightCapacity = weigthCapacity;
+	}
+
+	@Override
+	public String toString() {
+		
+		return "====/PLANE\\====\n"
+				+ CommonConstants.CARGO_PLANE
+				+ "\nNAME: " + getName()
+				+ "\nCOST: " + getCost()
+				+ "\nCONSUMPTION: " + getConsumption()
+				+ "\nWEIGHT CAPACITY: " + getWeightCapacity()
+				+ "\n====\\PLANE/====";
 	}
 
 

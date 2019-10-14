@@ -13,9 +13,7 @@ public class Airport {
 	
 	public void showPlanes() {
 		System.out.println("====/PLANES\\====");
-		for (Plane plane: planes) {
-			plane.show();
-		}
+		planes.forEach(plane->System.out.println(plane));
 		System.out.println("====\\PLANES/====");
 		System.out.println();
 	}
