@@ -9,7 +9,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import by.epam.task2.model.CargoPlane;
-import by.epam.task2.model.Plane;
 
 public class WeightCapacityComparatorTest {
 	@DataProvider
@@ -21,7 +20,12 @@ public class WeightCapacityComparatorTest {
 								, new CargoPlane("2", 1L, 3L, 4L)
 								, new CargoPlane("3", 1L, 3L, 3L)
 						}
-						, "132" 
+						,new CargoPlane[] {
+								new CargoPlane("1", 1L, 3L, 2L)
+								, new CargoPlane("3", 1L, 3L, 3L)
+								, new CargoPlane("2", 1L, 3L, 4L)
+								
+						} 
 				},
 				new Object[] {
 						new CargoPlane[] {
@@ -29,19 +33,20 @@ public class WeightCapacityComparatorTest {
 								, new CargoPlane("2", 1L, 15L, 3L)
 								, new CargoPlane("3", 1L, 15L, 1L) 
 						}
-						, "312" 
+						,new CargoPlane[] {
+								 new CargoPlane("3", 1L, 15L, 1L)
+								,new CargoPlane("1", 1L, 3L, 2L)
+								, new CargoPlane("2", 1L, 15L, 3L)
+						}
 				}, 
 		};
 	}
 
 	@Test(dataProvider = "dWeightCapacity")
-	public void consumpitonCompareTest(CargoPlane[] cargos, String result) {
+	public void consumpitonCompareTest(CargoPlane[] cargos, CargoPlane[] result) {
 		List<CargoPlane> pl = Arrays.asList(cargos);
+		List<CargoPlane> res = Arrays.asList(result);
 		pl.sort(new WeightCapacityComparator());
-		String answer = "";
-		for (Plane plane: pl) {
-			answer += plane.getName();
-		}
-		assertEquals(result, answer);
+		assertEquals(pl, res);
 	}
 }

@@ -22,7 +22,11 @@ public class CostComparatorTest {
 								, new CargoPlane("2", 1L, 3L, 2L)
 								, new Airliner("3", 3L, 2L, "1", 2L) 
 						}
-						, "213" 
+						,new Plane[] { 
+								new CargoPlane("2", 1L, 3L, 2L)
+								, new Airliner("1", 2L, 1L, "1", 2L)
+								, new Airliner("3", 3L, 2L, "1", 2L) 
+						}
 				},
 				new Object[] {
 						new Plane[] {
@@ -30,19 +34,21 @@ public class CostComparatorTest {
 								, new CargoPlane("2", 5L, 15L, 2L)
 								, new Airliner("3", 1L, 651L, "1", 2L) 
 						}
+						,new Plane[] {
+								new Airliner("3", 1L, 651L, "1", 2L)
+								, new Airliner("1", 2L, 516L, "1", 2L)
+								, new CargoPlane("2", 5L, 15L, 2L)
+						}
 						, "312" 
 				}, 
 		};
 	}
 
 	@Test(dataProvider = "dCost")
-	public void costCompareTest(Plane[] planes, String result) {
+	public void costCompareTest(Plane[] planes, Plane[] result) {
 		List<Plane> pl = Arrays.asList(planes);
+		List<Plane> res = Arrays.asList(result);
 		pl.sort(new CostComparator());
-		String answer = "";
-		for (Plane plane: pl) {
-			answer += plane.getName();
-		}
-		assertEquals(result, answer);
+		assertEquals(res, pl);
 	}
 }

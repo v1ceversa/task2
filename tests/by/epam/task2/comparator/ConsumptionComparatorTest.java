@@ -24,7 +24,11 @@ public class ConsumptionComparatorTest {
 								, new CargoPlane("2", 1L, 3L, 2L)
 								, new Airliner("3", 2L, 2L, "1", 2L) 
 						}
-						, "132" 
+						,new Plane[] { 
+								new Airliner("1", 2L, 1L, "1", 2L)
+								, new Airliner("3", 2L, 2L, "1", 2L)
+								, new CargoPlane("2", 1L, 3L, 2L) 
+						}
 				},
 				new Object[] {
 						new Plane[] {
@@ -32,19 +36,20 @@ public class ConsumptionComparatorTest {
 								, new CargoPlane("2", 1L, 15L, 2L)
 								, new Airliner("3", 2L, 651L, "1", 2L) 
 						}
-						, "213" 
+						,new Plane[] {
+								new CargoPlane("2", 1L, 15L, 2L)
+								, new Airliner("1", 2L, 516L, "1", 2L)
+								, new Airliner("3", 2L, 651L, "1", 2L) 
+						}
 				}, 
 		};
 	}
 
 	@Test(dataProvider = "dConsumption")
-	public void consumpitonCompareTest(Plane[] planes, String result) {
+	public void consumpitonCompareTest(Plane[] planes, Plane[] result) {
 		List<Plane> pl = Arrays.asList(planes);
+		List<Plane> res = Arrays.asList(result);
 		pl.sort(new ConsumptionComparator());
-		String answer = "";
-		for (Plane plane: pl) {
-			answer += plane.getName();
-		}
-		assertEquals(result, answer);
+		assertEquals(res, pl);
 	}
 }

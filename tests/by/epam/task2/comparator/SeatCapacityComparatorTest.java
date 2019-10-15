@@ -9,7 +9,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import by.epam.task2.model.Airliner;
-import by.epam.task2.model.Plane;
 
 public class SeatCapacityComparatorTest {
 	@DataProvider
@@ -20,26 +19,29 @@ public class SeatCapacityComparatorTest {
 								new Airliner("1", 2L, 1L, "1", 2L)
 								, new Airliner("3", 2L, 2L, "1", 3L) 
 						}
-						, "13" 
+						,new Airliner[] { 
+								new Airliner("1", 2L, 1L, "1", 2L)
+								, new Airliner("3", 2L, 2L, "1", 3L) 
+						} 
 				},
 				new Object[] {
 						new Airliner[] {
 								new Airliner("1", 2L, 516L, "1", 2L)
 								, new Airliner("3", 2L, 651L, "1", 1L) 
 						}
-						, "31" 
+						,new Airliner[] {
+								new Airliner("3", 2L, 651L, "1", 1L)
+								, new Airliner("1", 2L, 516L, "1", 2L)
+						}
 				}, 
 		};
 	}
 
 	@Test(dataProvider = "dSeatCapacity")
-	public void seatCapacityCompareTest(Airliner[] airliners, String result) {
+	public void seatCapacityCompareTest(Airliner[] airliners, Airliner[] result) {
 		List<Airliner> pl = Arrays.asList(airliners);
+		List<Airliner> res = Arrays.asList(result);
 		pl.sort(new SeatCapacityComparator());
-		String answer = "";
-		for (Plane plane: pl) {
-			answer += plane.getName();
-		}
-		assertEquals(result, answer);
+		assertEquals(res, pl);
 	}
 }
