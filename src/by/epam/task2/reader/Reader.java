@@ -14,14 +14,14 @@ import by.epam.task2.exception.FileException;
 import by.epam.task2.validator.Validator;
 
 public class Reader {
-	
+
 	private static final Logger logger = LogManager.getLogger(Reader.class);
-	
+
 	public static List<String> getVallidStrings(String filePath) {
 		logger.info("Reader was called with this:" + filePath + " file path.");
 		List<String> planes = null;
-		try (BufferedReader in= new BufferedReader(new FileReader(filePath))) {
-		
+		try (BufferedReader in = new BufferedReader(new FileReader(filePath))) {
+
 			String supposedPlane = null;
 			boolean isPlanesInit = false;
 			while ((supposedPlane = in.readLine()) != null) {
@@ -33,20 +33,18 @@ public class Reader {
 					planes.add(supposedPlane);
 				}
 			}
-		}
-		catch (FileNotFoundException e1) {
-			logger.error("your file path isn't valid, please check that" 
+		} catch (FileNotFoundException e1) {
+			logger.error("your file path isn't valid, please check that"
 					+ " your file is exist and is file path is correct");
 			throw new FileException("file is not found");
-		}
-		catch (IOException e2) {
-			logger.error("Bad token is going though! Please send logs and file" 
+		} catch (IOException e2) {
+			logger.error("Bad token is going though! Please send logs and file"
 					+ " that couses that error to support group: someref");
 			throw new FileException("bad token was processed");
 		}
 		logger.info("Reader ends running successfully");
-		
+
 		return planes;
 	}
-	
+
 }

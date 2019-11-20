@@ -1,4 +1,4 @@
-package by.epam.task2.utils;
+package by.epam.task2.filter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class Filter {
 		}
 		return airliners;
 	}
-	
+
 	public static List<CargoPlane> getCargoPlaneList(List<Plane> planes) {
 		List<CargoPlane> cargos = null;
 		boolean isCargoPlanesInit = false;

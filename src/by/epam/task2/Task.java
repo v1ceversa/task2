@@ -12,32 +12,31 @@ import by.epam.task2.parser.Parser;
 import by.epam.task2.reader.Reader;
 import by.epam.task2.utils.Sorter;
 
-
 public class Task {
 
 	public static void main(String[] args) {
-		
+
 		String filepath = new String("resources\\planes.txt");
-		
+
 		List<String> planesStr = Reader.getVallidStrings(filepath);
 		if (planesStr == null) {
-			return ;
+			return;
 		}
 		List<Plane> planes = new ArrayList<Plane>();
 		for (String plane : planesStr) {
 			List<String> typeAndParams = Parser.parse(plane);
 			planes.add(PlaneFactory.createPlane(typeAndParams));
 		}
-		
+
 		@SuppressWarnings("unused")
 		Airport airport = new Airport(planes);
-		
+
 		Sorter.sortPlanes(planes, new NameComparator().thenComparing(new CostComparator()));
-		
-		planes.forEach(plane->System.out.println(plane));
-		
+
+		planes.forEach(plane -> System.out.println(plane));
+
 		List<Airliner> airliners = Sorter.sortAirliner(planes, new ConveniencesComparator().reversed());
-		airliners.forEach(airliner->System.out.println(airliner));
+		airliners.forEach(airliner -> System.out.println(airliner));
 	}
 
 }
